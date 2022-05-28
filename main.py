@@ -1,13 +1,12 @@
 from kivy.app import App
 from kivy.config import Config
 
+
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 
 class MainScreen(FloatLayout):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.add_widget(Label(text="Hello world"))
+    pass
 
 class MainApp(App):
     def build(self):
