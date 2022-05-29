@@ -5,8 +5,14 @@ from kivy.config import Config
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 
+from kivy.graphics import Line
+
 class MainScreen(FloatLayout):
-    pass
+    def on_touch_up(self, touch):
+        # touch.opos - start position
+        # touch.pos - end position
+        with self.canvas:
+            Line(points=[touch.opos[0], touch.opos[1], touch.pos[0], touch.pos[1]])
 
 class MainApp(App):
     def build(self):
