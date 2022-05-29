@@ -23,13 +23,20 @@ class MainScreen(RelativeLayout):
         self.last_line = None
 
     def on_touch_down(self, touch):
-        if self.last_line:
-            self.last_line = None
-        else:
-            x, y = touch.pos
-            with self.canvas:
-                self.line_color = Color(0, 1, 0, 1)
-                self.last_line = Line(points=[x, y, x, y, x, y, x, y], width=5)
+        if touch.button == "left": # left mouse button
+            if self.last_line:
+                self.last_line = None
+            else:
+                x, y = touch.pos
+                with self.canvas:
+                    self.line_color = Color(0, 1, 0, 1)
+                    self.last_line = Line(points=[x, y, x, y, x, y, x, y], width=5)
+
+        elif touch.button == "right": # right mouse button
+            if self.last_line:
+                self.canvas.remove(self.last_line)
+                self.last_line = None
+
 
 
     def mouse_pos(self, window, pos):
