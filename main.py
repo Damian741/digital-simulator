@@ -29,15 +29,23 @@ class MainScreen(RelativeLayout):
             x, y = touch.pos
             with self.canvas:
                 self.line_color = Color(0, 1, 0, 1)
-                self.last_line = Line(points=[x, y, x, y], width=5)
+                self.last_line = Line(points=[x, y, x, y, x, y, x, y], width=5)
 
 
     def mouse_pos(self, window, pos):
         self.label.text = str(pos)
         if self.last_line:
             last_pos = self.last_line.points
+            x1, y1 = last_pos[:2]
+            x2, y2 = last_pos[-2:]
+            tan_a = (y2-y1)/(x2-x1) if x2-x1 !=0 else 0
+            if tan_a >=-1 and tan_a < 1:
+                middle_x = (x2 - x1)/2 + x1
+                last_pos[2:6] = [middle_x, y1, middle_x, y2]
+            else:
+                middle_y = (y2 - y1)/2 + y1
+                last_pos[2:6] = [x1, middle_y, x2, middle_y]
             last_pos[-2:] = pos
-
             self.last_line.points=last_pos
             
 
