@@ -23,42 +23,13 @@ class MainScreen(RelativeLayout):
         self.last_line = None
 
     def on_touch_down(self, touch):
-        if touch.button == "left":  # left mouse button
-            if self.last_line:  # stop drawing last line
-                self.last_line = None
-            else:
-                x, y = touch.pos
-
-                # search if there already is line
-                for child in self.canvas.children:
-                    if isinstance(child, Line):
-                        x1, y1 = child.points[:2]
-                        x2, y2 = child.points[-2:]
-                        if x2 < x + 10 and x2 > x - 10 and y2 < y + 10 and y2 > y - 10:
-                            self.last_line = child
-                            return
-                        elif x1 < x + 10 and x1 > x - 10 and y1 < y + 10 and y1 > y - 10:
-                            self.last_line = child
-                            points = self.last_line.points
-                            # reverse points
-                            points[:2] = [x2, y2]
-                            middle1 = points[2:4]
-                            middle2 = points[4:6]
-                            points[2:4] = middle2
-                            points[4:6] = middle1
-                            points[-2:] = [x1, y1]
-                            self.last_line.points = points
-                            return
-
-                with self.canvas:
-                    self.line_color = Color(0, 1, 0, 1)
-                    self.last_line = Line(points=[x, y, x, y, x, y, x, y], width=5)
-
-        elif touch.button == "right":  # right mouse button
-            if self.last_line:
-                self.canvas.remove(self.last_line)
-                self.last_line = None
-
+        if self.last_line:
+            self.last_line = None
+        else:
+            x, y = touch.pos
+            with self.canvas:
+                self.line_color = Color(0, 1, 0, 1)
+                self.last_line = Line(points=[x, y, x, y, x, y, x, y], width=5)
 
 
     def mouse_pos(self, window, pos):
