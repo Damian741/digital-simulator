@@ -1,5 +1,12 @@
 # kivy 2.1.0
 
 <MainScreen>:
-    Label:
-        text: "Hello world"
+
+<ColumnName>:
+    canvas:
+        Color:
+            rgba: 1, .0, .0, .5
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
