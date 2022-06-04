@@ -7,6 +7,7 @@ class TopNavbar(RelativeLayout, UpdateRelativeRectMixin):
     def __init__(self, **kw):
         super().__init__(**kw)
         with self.canvas:
-            Color(0, 1, 0, 1)
+            Color(0, 1, 0, 0.1)
             self.rectangle = Rectangle(size=self.size)
-        self.bind(size=self.update_rect)
+        self.bind_rectangle()
+        #self.bind(size=self.update_rect)

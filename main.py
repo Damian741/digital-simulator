@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.config import Config
-from ui.main_screen import MainScreen
+from ui.mainscreen import MainScreen
             
 
 class MainApp(App):
@@ -8,8 +8,9 @@ class MainApp(App):
         return MainScreen()
 
 if __name__ == "__main__":
-    # Config.set("graphics", "width", "1000")
-    # Config.set("graphics", "height", "800")
+    Config.set("graphics", "width", "2000")
+    Config.set("graphics", "height", "1200")
+    Config.set('graphics', 'resizable', False)
     Config.set('input', 'mouse', 'mouse,disable_multitouch')
     Config.write()
     MainApp().run()

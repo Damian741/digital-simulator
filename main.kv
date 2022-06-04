@@ -1,21 +1,28 @@
 # kivy 2.1.0
 
-<MainScreen>:
-    size_hint: 1, 1
-    orientation: 'vertical'
-    
+<ColumnName>:
 
+<Connector>:
+    size_hint: 1, None
+    height: 20
+    
+<MainScreen>:
+    orientation: 'vertical'
+    size_hint: 1, 1
     
 <TopNavbar>:
+    size_hint: 1, 0.1
+
+<MiddleLayout>: 
+    size_hint: 1, 0.85
+
+<ConnectorBar>:
+    size_hint: 0.1, 1
     
+
 <Board>:
+    size_hint: 0.8, 1
     
-
-<ColumnName>:
-    canvas:
-        Color:
-            rgba: 1, .0, .0, .5
-
-        Rectangle:
-            pos: self.pos
-            size: self.size
+<BottomLayout>:
+    orientation: 'horizontal'
+    size_hint: 1, 0.05
