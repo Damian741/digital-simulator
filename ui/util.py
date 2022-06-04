@@ -2,6 +2,7 @@ from kivy.uix.label import Label
 from kivy.graphics import Color, Rectangle
 from config import GRID_WIDTH
 
+
 class UpdateRelativeRectMixin:
     def bind_rectangle(self):
         self.bind(size=self.update_rect_size)
@@ -20,7 +21,7 @@ class UpdateFloatRectMixin(UpdateRelativeRectMixin):
 
 
 class ColumnName(Label, UpdateRelativeRectMixin):
-    def __init__(self, name,  bcolor=(1, 0, 0, 1), **kwargs):
+    def __init__(self, name, bcolor=(1, 0, 0, 1), **kwargs):
         super().__init__(**kwargs)
         self.name = name
         self.bcolor = bcolor
@@ -30,7 +31,7 @@ class ColumnName(Label, UpdateRelativeRectMixin):
         with self.canvas.before:
             Color(*self.bcolor)
             Rectangle(pos=self.pos, size=self.size)
-    
+
     def print(self, msg):
         self.text = f"{self.name}: {msg}"
 

@@ -5,6 +5,7 @@ from .toplayout import TopNavbar
 from .middlelayout import MiddleLayout
 from .bottomlayout import BottomLayout
 
+
 class MainScreen(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -14,4 +15,3 @@ class MainScreen(BoxLayout):
         self.add_widget(self.top_navbar)
         self.add_widget(self.board)
         self.add_widget(self.bottom_layout)
-        
